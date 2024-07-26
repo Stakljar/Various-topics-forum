@@ -1,0 +1,88 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      backend:
+        condition: service_started
+    restart: on-failure:5
+    networks:
+      - fntnd-bcknd
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    secrets:
+      - mysql_root_password
+    environment:
+      - MYSQL_USERNAME=root
+    depends_on:
+      db:
+        condition: service_healthy
+      maildev:
+        condition: service_started
+    restart: on-failure:5
+    networks:
+      - fntnd-bcknd
+      - bcknd-db
+
+  maildev:
+    image: maildev/maildev
+    container_name: maildev
+    ports:
+      - "1080:1080"
+    restart: on-failure:5
+    networks:
+      - bcknd-db
+
+  db:
+    image: mysql:9.0.1
+    container_name: db
+    secrets:
+      - mysql_root_password
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+      MYSQL_DATABASE: various_topics_forum
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+      interval: 60s
+      retries: 5
+      start_period: 20s
+      timeout: 15s
+    restart: on-failure:5
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    networks:
+      - bcknd-db
+
+  phpmyadmin:
+    image: phpmyadmin:5.2.1-apache
+    ports:
+      - "80:80"
+    secrets:
+      - mysql_root_password
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+    restart: on-failure:5
+    networks:
+      - bcknd-db
+
+volumes:
+  mysql_data:
+secrets:
+  mysql_root_password:
+    file: ./db/mysql_root_password.txt
+networks:
+  fntnd-bcknd:
+    driver: bridge
+  bcknd-db:
+    driver: bridge

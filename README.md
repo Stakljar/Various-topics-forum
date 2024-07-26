@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Various-topics-forum-fullstack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Full stack web application made using Java Spring Boot, ReactJS and MySQL Database.
+The application is about people discussing on various topics.
+Features include:
+- Sign up and Sign in
+- JWT authentication and authorization
+- E-mail confirmation
+- Password change and reset
+- Logout
+- Browsing discussions by search term or category with pagination
+- Adding new discussions
+- Commenting on discussions
+- Browsing comments with pagination
+- Upvoting or downvoting discussions or comments
+- Soft deleting comments or discussions with their comments by admin or by the user who posted them
+- Browsing user profiles
 
-## Available Scripts
+## How to run
+Clone the repository by running:
+```
+git clone https://github.com/Stakljar/Various-topics-forum.git
+```
 
-In the project directory, you can run:
+Database setup steps when using MySQL Workbench:
+1. Download and run MySQL Server installer from: https://dev.mysql.com/downloads/mysql/
+2. Make sure port and root password match the ones defined in Spring Boot's application.properties file during configuration
+3. Download and run MySQL Workbench installer from: https://dev.mysql.com/downloads/workbench/
+4. Open it and search for local instance, rescan if needed
+5. Click on File -> Open SQL Script, look up for db/dump.sql and open it
+6. Select lightning icon for running SQL script which will create and populate database
+MySQL server needs to be running for you to start backend.
 
-### `npm start`
+For backend you can use IDEs such as Eclipse with Spring Tools or IntelliJ IDEA and others or you can use command line with Maven.
+Steps when using command line with Maven on Windows:
+1. Download and run JDK Windows Installer for JDK version 17 or above if JDK is not already installed from: https://www.oracle.com/java/technologies/downloads/
+2. Define new environment variable named JAVA_HOME and set its value to jdk location, usually it is like "C:\Program Files\Java\jdk-[version]"
+3. In "Path" environment variable add this path "%JAVA_HOME%\bin"
+4. Download Apache Maven Binary zip archive from: https://maven.apache.org/download.cgi
+5. Extract it and copy extracted file's bin directory path and add it to "Path" environment variable
+6. In project's root directory, type in command line:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    ```
+    cd backend
+    mvn spring-boot:run
+    ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Install node_modules and run frontend, in project's root directory run following:
+```
+cd frontend
+npm install
+npm run
+```
 
-### `npm test`
+For using mailing services you need to install and run maildev: https://github.com/maildev/maildev
+by running following commands:
+```
+npm install -g maildev
+maildev
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Running with Docker
+Follow system requirements, download and run Docker Desktop Installer from: https://docs.docker.com/get-docker/ if you don't have Docker Desktop installed already.
+After that run following command:
+```
+docker-compose up
+```
+You should have your images created and containers up and running.

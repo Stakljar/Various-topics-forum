@@ -1,0 +1,20 @@
+package com.example.various_topics_forum.discussion;
+
+public enum Category {
+    NATURE_AND_ANIMALS,
+    SCIENCE,
+    TECHNOLOGY,
+    ARTS_AND_LITERATURE,
+    HISTORY_AND_CULTURE,
+    PHILOSOPHY_AND_RELIGION,
+    TRAVEL,
+    HEALTH_AND_WELLNESS,
+    SPORTS_AND_FITNESS,
+    FOOD_AND_DRINK,
+    BUSINESS_AND_ECONOMICS,
+    POLITICS_AND_SOCIETY,
+    ENVIRONMENT,
+    ENTERTAINMENT,
+    EDUCATION,
+    OTHER;
+}

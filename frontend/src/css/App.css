@@ -1,0 +1,730 @@
+.App {
+  text-align: center;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.default-button {
+  cursor: pointer;
+  padding: 6px 15px;
+  border: 1px solid #331804;
+  border-radius: 4px;
+  background-color: #5c3215;
+  color: white;
+}
+
+.default-button:hover,
+.default-button:focus {
+  background-color: #99521f;
+}
+
+.default-input {
+  padding: 6px;
+  border: none;
+  border-radius: 4px;
+}
+
+.title {
+  width: fit-content;
+  font-size: 3.4rem;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.spinner {
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+  border: 4px solid white;
+  border-top-color: #914e1f;
+  margin: 20px auto;
+  animation-name: load;
+  -webkit-animation-name: load;
+  -moz-animation-name: load;
+  -o-animation-name: load;
+  -ms-animation-name: load;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+form>div>input,
+#new-discussion form>div>textarea,
+#new-discussion form>div>select {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+nav {
+  background-color: #9c5624;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav>.title {
+  text-align: start;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 60px;
+  font-size: 2.5rem;
+}
+
+nav svg {
+  cursor: pointer;
+  margin-right: 30px;
+  width: 24px;
+}
+
+nav svg>path {
+  stroke: white;
+}
+
+nav button {
+  margin-right: 30px;
+}
+
+.menu {
+  position: absolute;
+  top: 60px;
+  right: 25px;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#signin>.title {
+  margin: auto;
+}
+
+#signin,
+#signup {
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5%;
+  width: 40%;
+  padding: 40px;
+  border-radius: 3px;
+}
+
+#signin hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#signin form,
+#signup form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+#signin form button,
+#signup form button {
+  margin-top: 10px;
+}
+
+#signup-back-button {
+  margin-top: 40px;
+}
+
+#signin-additional-options {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#signin-additional-options>div button {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+#email-confirmation,
+#signin-notice,
+#notice {
+  margin-top: 10%;
+  padding: 40px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.info-message {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#discussions,
+#new-discussion,
+#password-change,
+#profile,
+#password-reset,
+#new-password {
+  margin: 40px 30px;
+}
+
+#new-discussion,
+#password-change,
+#profile,
+#password-reset,
+#new-password {
+  width: fit-content;
+}
+
+#new-discussion,
+#password-change,
+#profile,
+#discussion,
+#password-reset,
+#new-password {
+  text-align: start;
+}
+
+#discussions #search-and-add-new-discussion {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+#discussions #search-form {
+  width: fit-content;
+}
+
+#discussions #search-form input {
+  margin: 0;
+}
+
+#discussions #search-form>div {
+  text-align: start;
+  margin-bottom: 15px;
+}
+
+#discussions #search-form input {
+  margin-right: 30px;
+}
+
+#discussions #search-form label,
+#discussion #sort-by-discussion-menu-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+#discussions #search-form-search-term button {
+  margin-top: 15px;
+}
+
+#discussions #discussion-items {
+  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
+
+#discussions #category-search-menu,
+#discussions #sort-search-menu,
+#discussion #sort-by-discussion-menu {
+  margin-top: 8px;
+}
+
+#discussions #discussion-items .discussion-item {
+  height: fit-content;
+  text-align: start;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.discussion-item .discussion-title-date-and-delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+  margin-bottom: 15px;
+}
+
+.discussion-item h3 {
+  margin-top: 0;
+  width: 60%;
+  cursor: pointer;
+}
+
+.discussion-item .discussion-voting {
+  margin-top: 20px;
+}
+
+.voting {
+  display: flex;
+  gap: 20px;
+}
+
+.voting>div {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.voting svg {
+  width: 24px;
+}
+
+.voting svg:hover,
+#discussion #add-comment svg:hover {
+  cursor: pointer;
+}
+
+#discussion {
+  border-radius: 5px;
+  padding: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 45%;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+#discussion #discussion-info-and-delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 5px;
+}
+
+#discussion hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#discussion #discussion-info,
+.discussion-item .discussion-date {
+  font-size: 0.9rem;
+}
+
+.discussion-item .discussion-delete {
+  margin-top: 8px;
+  text-align: end;
+}
+
+#discussion-info {
+  width: 50%;
+}
+
+#discussion #discussion-info:hover>span {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#discussion #discussion-description {
+  margin-bottom: 50px;
+}
+
+#discussion #add-comment {
+  margin-top: 20px;
+}
+
+#discussion #add-comment>input {
+  margin-right: 20px;
+  width: 30%;
+}
+
+#discussion #add-comment svg {
+  width: 15px;
+}
+
+#discussion .comment-reply {
+  display: flex;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+#discussion #add-comment>div>svg {
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+#discussion-comments>* {
+  margin-top: 30px;
+}
+
+.comment .comment-author-and-date>.comment-author {
+  cursor: pointer;
+}
+
+.comment .comment-content {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.comment .comment-date {
+  font-size: 0.9rem;
+  margin-left: 20px;
+}
+
+.comment-reply {
+  border-radius: 5px;
+  margin-left: 20px;
+  width: fit-content;
+  padding: 5px;
+}
+
+.comment .comment-reply {
+  margin-top: 15px;
+}
+
+.comment .comment-reply-comment-author:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.comment .comment-reactions {
+  display: flex;
+  gap: 20px;
+}
+
+.comment hr {
+  border: none;
+  height: 1px;
+  color: #9b9b9b;
+  background-color: #9b9b9b;
+}
+
+#new-discussion form>* {
+  margin-bottom: 20px;
+}
+
+#new-discussion form>div:has(> #discussion-description-input) {
+  display: flex;
+  align-items: center;
+}
+
+#new-discussion form>div:has(> button) {
+  margin-top: 30px;
+}
+
+#password-change form>*,
+#new-password form>*,
+#password-reset form>* {
+  margin-bottom: 20px;
+}
+
+#password-change form>div:has(> button),
+#new-password form>div:has(> button),
+#password-reset form>div:has(> button) {
+  margin-top: 30px;
+}
+
+#profile {
+  width: 30%;
+  padding: 30px;
+}
+
+#profile #profile-info {
+  border-radius: 5px;
+}
+
+#profile #profile-info>* {
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  margin-right: 5px;
+}
+
+.tab-content {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+#profile #profile-tabs .profile-list-item {
+  margin-bottom: 20px;
+}
+
+#profile #profile-tabs .profile-list-item>* {
+  margin-bottom: 5px;
+}
+
+#profile #profile-tabs .profile-list-item .comment-content,
+#profile #profile-tabs .profile-list-item .discussion-title {
+  cursor: pointer;
+}
+
+#profile #profile-tabs .profile-list-item>div>div {
+  margin-bottom: 8px;
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes load {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes load {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes load {
+  0% {
+    -o-transform: rotate(0deg);
+  }
+
+  100% {
+    -o-transform: rotate(360deg);
+  }
+}
+
+@-ms-keyframes load {
+  0% {
+    -ms-transform: rotate(0deg);
+  }
+
+  100% {
+    -ms-transform: rotate(360deg);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .default-input {
+    background-color: var(--input-color-light);
+  }
+
+  .default-button {
+    background-color: var(--button-color-light);
+  }
+
+  .default-button:hover,
+  .default-button:focus {
+    background-color: var(--button-focus-color-light);
+  }
+
+  .title {
+    background: linear-gradient(120deg, #ffefe4, #daa582);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+  }
+
+  nav {
+    background-color: var(--nav-color-light);
+  }
+
+  .menu {
+    background-color: white;
+  }
+
+  .menu li:hover {
+    background-color: #f0f0f0;
+  }
+
+  #signin,
+  #signup {
+    color: white;
+    background-color: var(--tertiary-background-color-light);
+  }
+
+  #email-confirmation,
+  #signin-notice,
+  #notice {
+    background-color: var(--secondary-background-color-light);
+  }
+
+  .discussion-item,
+  #discussion,
+  #profile {
+    background-color: var(--secondary-background-color-light);
+  }
+
+  .discussion-item {
+    border: 1px solid var(--secondary-background-color-light);
+  }
+
+  .discussion-item:hover {
+    border: 1px solid black;
+  }
+
+  #discussion #add-comment>div,
+  .comment-reply {
+    background-color: #ececec;
+  }
+
+  .tab {
+    background-color: #e9e9e9;
+  }
+
+  .tab.active {
+    background-color: #d1d1d1;
+  }
+
+  #profile #profile-tabs .tab-content {
+    background-color: var(--secondary-background-color-light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .default-input {
+    background-color: var(--input-color-dark);
+  }
+
+  .default-button {
+    background-color: var(--button-color-dark);
+  }
+
+  .default-button:hover,
+  .default-button:focus {
+    background-color: var(--button-focus-color-dark);
+  }
+
+  .title {
+    background: linear-gradient(120deg, #665f5a, #daa582);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+  }
+
+  nav {
+    background-color: var(--nav-color-dark);
+  }
+
+  .menu {
+    background-color: var(--input-color-dark);
+  }
+
+  .menu li:hover {
+    background-color: #555555;
+  }
+
+  #signin,
+  #signup {
+    background-color: var(--tertiary-background-color-dark);
+  }
+
+  #email-confirmation,
+  #signin-notice,
+  #notice {
+    background-color: var(--secondary-background-color-dark);
+  }
+
+  #discussions {
+    background-color: var(--background-color-dark);
+  }
+
+  .discussion-item,
+  #discussion,
+  #profile {
+    background-color: var(--secondary-background-color-dark);
+  }
+
+  .discussion-item {
+    border: 1px solid var(--secondary-background-color-dark);
+  }
+
+  .discussion-item:hover {
+    border: 1px solid white;
+  }
+
+  #discussion #add-comment>div,
+  .comment-reply {
+    background-color: #2c1507;
+  }
+
+  .tab {
+    background-color: #383838;
+  }
+
+  .tab.active {
+    background-color: #272727;
+  }
+
+  #profile #profile-tabs .tab-content {
+    background-color: var(--background-color-dark);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  #signin,
+  #signup {
+    width: 80%;
+  }
+
+  #new-discussion,
+  #password-change,
+  #profile,
+  #password-reset,
+  #new-password {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #discussions #search-and-add-new-discussion {
+    flex-direction: column;
+  }
+
+  #discussions #add-new-discussion {
+    margin-top: 30px;
+  }
+
+  #discussions #discussion-items {
+    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+  }
+
+  #discussion {
+    width: 80%;
+  }
+
+  #discussion #add-comment>input {
+    width: 60%;
+  }
+
+  .comment-reply svg {
+    width: 24px;
+  }
+
+  #profile {
+    width: 80%;
+  }
+}
