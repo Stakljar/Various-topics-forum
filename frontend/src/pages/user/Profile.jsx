@@ -159,8 +159,8 @@ export default function Profile() {
                               <ListDiscussionItem key={discussion.id} discussion={discussion} setDiscussions={setDiscussions} interceptedInstance={interceptedInstance} />
                             )
                           }
-                          {areDiscussionsLoading && <Spinner />}
                         </div>
+                        {areDiscussionsLoading && <Spinner />}
                         {
                           didDiscussionsLoadRef.current ?
                             (isDiscussionLastRef.current || <Button text="Load more"
@@ -178,8 +178,8 @@ export default function Profile() {
                               <ListCommentItem key={comment.id} comment={comment} setComments={setComments} interceptedInstance={interceptedInstance} />
                             )
                           }
-                          {areCommentsLoading && <Spinner />}
                         </div>
+                        {areCommentsLoading && <Spinner />}
                         {
                           didCommentsLoadRef.current ?
                             (isCommentLastRef.current || <Button text="Load more"

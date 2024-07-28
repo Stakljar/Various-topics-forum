@@ -13,8 +13,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DiscussionPageResponse {
-    private long totalElements;
-    private long totalPages;
+    private int size;
+    private int number;
+    private int totalElements;
+    private int totalPages;
     private boolean last;
 
     @Builder.Default

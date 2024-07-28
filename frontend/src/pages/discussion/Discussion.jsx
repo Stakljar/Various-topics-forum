@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { roles } from "../../data/roles"
 import { useContext, useEffect, useRef, useState } from "react"
 import { AuthContext } from "../../App"
@@ -20,7 +20,6 @@ export default function Discussion() {
   const { discussionId } = useParams()
   const errorAlert = useErrorAlert()
   const navigate = useNavigate()
-  const location = useLocation()
   const interceptedInstance = useRefreshIntercept()
   const [discussionErrorMessage, handleDiscussionError, resetDiscussionError, setDiscussionErrorMessage] = useErrorMessage()
   const [commentsErrorMessage, handleCommentsError, resetCommentsError, setCommentsErrorMessage] = useErrorMessage()
@@ -35,6 +34,7 @@ export default function Discussion() {
   const isDiscussionUpvoteRef = useRef(null)
   const isLastRef = useRef(false)
   const pageNumberRef = useRef(0)
+  const totalPagesRef = useRef(0)
 
   useEffect(() => {
     if (!isDiscussionLoading) {
@@ -85,7 +85,7 @@ export default function Discussion() {
         const response = await instance.get("/comments" + (user.role === roles.REGULAR_USER ? "/with_user_votes" : ""), {
           params: {
             page_number: pageNumberRef.current,
-            page_size: 15,
+            page_size: 8,
             discussion_id: discussionId,
           },
           signal: abortController.signal,
@@ -93,11 +93,10 @@ export default function Discussion() {
             "Authorization": user.role === roles.REGULAR_USER ? ("Bearer " + user.accessToken) : "",
           },
         })
-        setAreCommentsLoading(false)
+        totalPagesRef.current = response.data.totalPages
         isLastRef.current = response.data.last
-        setComments((prev) => {
-          return [...prev, ...response.data.content]
-        })
+        setAreCommentsLoading(false)
+        setComments(response.data.content)
       }
       catch (error) {
         if (error.code === AxiosError.ERR_CANCELED) {
@@ -169,9 +168,11 @@ export default function Discussion() {
           })
         setIsCommentAddLoading(false)
         setComment({ discussionId: discussionId, content: "", replyTo: { id: null, userId: null, userProfileName: "", content: "" } })
-        setComments((prev) => {
-          return [response.data, ...prev]
-        })
+        if(totalPagesRef.current - 1 === pageNumberRef.current || totalPagesRef.current === 0) {
+          setComments((prev) => {
+            return [...prev, response.data]
+          })
+        }
       }
       catch (error) {
         setIsCommentAddLoading(false)
@@ -210,20 +211,6 @@ export default function Discussion() {
     deleteDiscussion()
     return () => abortController.abort()
   }, [isDiscussionDeleteLoading])
-
-  useEffect(() => {
-    function handleScroll() {
-      const { scrollTop, clientHeight, scrollHeight } = document.documentElement
-      if (scrollTop + clientHeight >= scrollHeight && !isLastRef.current) {
-        pageNumberRef.current = pageNumberRef.current + 1
-        setAreCommentsLoading(true)
-      }
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
 
   return (
     <div id="discussion">
@@ -266,14 +253,23 @@ export default function Discussion() {
           <Button text="Add" type="submit" />
         </form>
       }
+      {commentsErrorMessage && <InfoMessage infoMessage={commentsErrorMessage} />}
       <div id="discussion-comments">
-        {commentsErrorMessage && <InfoMessage infoMessage={commentsErrorMessage} />}
         {
           comments.map((comment) => {
             return <Comment key={comment.id} comment={comment} setComments={setComments} setComment={setComment} interceptedInstance={interceptedInstance} />
           })
         }
-        {areCommentsLoading && <Spinner />}
+      </div>
+      {areCommentsLoading && <Spinner />}
+      <div id="comment-pages-selection">
+        {
+          Array.from(Array(totalPagesRef.current).keys()).map((page) =>
+            <div key={page} className={page === pageNumberRef.current ? "current" : ""}
+              onClick={() => { pageNumberRef.current = page; setAreCommentsLoading(true) }}>
+              <strong>{page + 1}</strong>
+            </div>)
+        }
       </div>
     </div>
   )

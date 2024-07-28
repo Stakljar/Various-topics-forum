@@ -33,11 +33,17 @@ public class DiscussionService {
     private final DiscussionMapper discussionMapper;
 
     private Sort getSort(String sortBy) {
-        if (sortBy == null || "popularity".equalsIgnoreCase(sortBy)) {
+        if (sortBy == null || "popularity_desc".equalsIgnoreCase(sortBy)) {
             return JpaSort.unsafe("COUNT(dv.id)").descending().and(Sort.by("d.createdAt").descending());
-        } 
-        else if ("date".equalsIgnoreCase(sortBy)) {
+        }
+        else if ("popularity_asc".equalsIgnoreCase(sortBy)) {
+            return JpaSort.unsafe("COUNT(dv.id)").ascending().and(Sort.by("d.createdAt").descending());
+        }
+        else if ("date_desc".equalsIgnoreCase(sortBy)) {
             return Sort.by("d.createdAt").descending().and(JpaSort.unsafe("COUNT(dv.id)").descending());
+        }
+        else if ("date_asc".equalsIgnoreCase(sortBy)) {
+            return Sort.by("d.createdAt").ascending().and(JpaSort.unsafe("COUNT(dv.id)").descending());
         }
         else {
             throw new IllegalArgumentException("Invalid sort parameter: " + sortBy);

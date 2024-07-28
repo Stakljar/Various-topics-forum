@@ -33,7 +33,6 @@ export default function EmailConfirmation() {
         setIsLoading(false)
       }
       catch (error) {
-        console.log(error)
         if (error.code === AxiosError.ERR_CANCELED) {
           return
         }

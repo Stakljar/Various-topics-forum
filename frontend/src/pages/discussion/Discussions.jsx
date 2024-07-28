@@ -80,7 +80,7 @@ export default function Discussions() {
     return () => {
       window.removeEventListener("scroll", handleScroll)
     }
-  }, [])  
+  }, [])
 
   return (
     <div id="discussions">
@@ -111,8 +111,10 @@ export default function Discussions() {
             </div>
             <select id="sort-search-menu" className="default-input" value={searchParams.sort}
               onChange={(e) => setSearchParams((prev) => { return { ...prev, sort: e.target.value } })}>
-              <option value="popularity">Popularity</option>
-              <option value="date">Date</option>
+              <option value="popularity_desc">Popularity (High to Low)</option>
+              <option value="popularity_asc">Popularity (Low to High)</option>
+              <option value="date_desc">Date (Newest First)</option>
+              <option value="date_asc">Date (Oldest First)</option>
             </select>
           </div>
         </form>
@@ -123,15 +125,15 @@ export default function Discussions() {
           </div>
         }
       </div>
+      {errorMessage && <InfoMessage infoMessage={errorMessage} />}
       <div id="discussion-items">
-        {errorMessage && <InfoMessage infoMessage={errorMessage} />}
         {
           discussions.map((discussion) => {
             return <DiscussionItem key={discussion.id} discussion={discussion} setDiscussions={setDiscussions} interceptedInstance={interceptedInstance} />
           })
         }
-        {isLoading && <Spinner />}
       </div>
+      {isLoading && <Spinner />}
     </div>
   )
 }

@@ -5,12 +5,26 @@
 }
 
 .default-button {
-  cursor: pointer;
   padding: 6px 15px;
   border: 1px solid #331804;
   border-radius: 4px;
   background-color: #5c3215;
   color: white;
+}
+
+.default-button:hover,
+.title:hover,
+nav svg:hover,
+.menu li:hover,
+.discussion-item h3:hover,
+.voting svg:hover,
+#discussion #add-comment svg:hover,
+#discussion #comment-pages-selection>div:hover,
+.comment .comment-author-and-date>.comment-author:hover,
+#profile #profile-tabs .profile-list-item .comment-content:hover,
+#profile #profile-tabs .profile-list-item .discussion-title:hover,
+.tab:hover {
+  cursor: pointer;
 }
 
 .default-button:hover,
@@ -28,7 +42,6 @@
   width: fit-content;
   font-size: 3.4rem;
   -webkit-text-fill-color: transparent;
-  cursor: pointer;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -76,7 +89,6 @@ nav>.title {
 }
 
 nav svg {
-  cursor: pointer;
   margin-right: 30px;
   width: 24px;
 }
@@ -105,7 +117,6 @@ nav button {
 
 .menu li {
   padding: 10px 20px;
-  cursor: pointer;
 }
 
 #signin>.title {
@@ -261,11 +272,14 @@ nav button {
 .discussion-item h3 {
   margin-top: 0;
   width: 60%;
-  cursor: pointer;
 }
 
 .discussion-item .discussion-voting {
   margin-top: 20px;
+}
+
+.discussion-item:hover {
+  border: 1px solid currentColor;
 }
 
 .voting {
@@ -281,11 +295,6 @@ nav button {
 
 .voting svg {
   width: 24px;
-}
-
-.voting svg:hover,
-#discussion #add-comment svg:hover {
-  cursor: pointer;
 }
 
 #discussion {
@@ -324,7 +333,8 @@ nav button {
   width: 50%;
 }
 
-#discussion #discussion-info:hover>span {
+#discussion #discussion-info>span:hover,
+.comment .comment-reply-comment-author:hover {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -361,8 +371,27 @@ nav button {
   margin-top: 30px;
 }
 
-.comment .comment-author-and-date>.comment-author {
-  cursor: pointer;
+#discussion #comment-pages-selection {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 15px;
+  display: flex;
+  gap: 20px;
+  font-size: 1.1rem;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+#discussion #comment-pages-selection > div {
+  padding: 3px;
+  padding-bottom: 6px;
+  text-align: center;
+  min-width: 25px;
+  width: 25px;
 }
 
 .comment .comment-content {
@@ -384,11 +413,6 @@ nav button {
 
 .comment .comment-reply {
   margin-top: 15px;
-}
-
-.comment .comment-reply-comment-author:hover {
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 .comment .comment-reactions {
@@ -448,14 +472,13 @@ nav button {
 
 .tab {
   padding: 10px 20px;
-  cursor: pointer;
   border: none;
   margin-right: 5px;
 }
 
 .tab-content {
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid currentColor;
 }
 
 #profile #profile-tabs .profile-list-item {
@@ -464,11 +487,6 @@ nav button {
 
 #profile #profile-tabs .profile-list-item>* {
   margin-bottom: 5px;
-}
-
-#profile #profile-tabs .profile-list-item .comment-content,
-#profile #profile-tabs .profile-list-item .discussion-title {
-  cursor: pointer;
 }
 
 #profile #profile-tabs .profile-list-item>div>div {
@@ -580,13 +598,13 @@ nav button {
     border: 1px solid var(--secondary-background-color-light);
   }
 
-  .discussion-item:hover {
-    border: 1px solid black;
-  }
-
   #discussion #add-comment>div,
   .comment-reply {
     background-color: #ececec;
+  }
+
+  #discussion #comment-pages-selection > .current {
+    color: #bdbdbd;
   }
 
   .tab {
@@ -660,13 +678,13 @@ nav button {
     border: 1px solid var(--secondary-background-color-dark);
   }
 
-  .discussion-item:hover {
-    border: 1px solid white;
-  }
-
   #discussion #add-comment>div,
   .comment-reply {
     background-color: #2c1507;
+  }
+
+  #discussion #comment-pages-selection > .current {
+    color: #6b6b6b;
   }
 
   .tab {

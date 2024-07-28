@@ -13,10 +13,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommentPageResponse {
-    private long totalElements;
-    private long totalPages;
+    private int size;
+    private int number;
+    private int totalElements;
+    private int totalPages;
     private boolean last;
-    
+
     @Builder.Default
     private List<CommentResponse> content = new ArrayList<>();
 }

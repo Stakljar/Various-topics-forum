@@ -78,16 +78,16 @@ public class CommentService {
     public CommentPageResponse fetchCommentsByDiscussion(Long discussionId, int pageNumber, int pageSize) {
         Discussion discussion = discussionRepository.findByIdAndDeletedAtNull(discussionId).orElseThrow(() -> new EntityNotFoundException(
                 "Discussion with id " + discussionId + " not found"));
-        Sort sort = Sort.by("c.createdAt").descending();
+        Sort sort = Sort.by("c.createdAt").ascending();
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         Page<CommentWithVotes> commentWithVotes = commentRepository.findWithVotesByDiscussion(discussion, pageable);
         return commentMapper.toCommentWithVotesPageResponse(commentWithVotes);
     }
-    
+
     public CommentPageResponse fetchCommentsWithUserVotesByDiscussion(Long discussionId, int pageNumber, int pageSize) {
         Discussion discussion = discussionRepository.findByIdAndDeletedAtNull(discussionId).orElseThrow(() -> new EntityNotFoundException(
                 "Discussion with id " + discussionId + " not found"));
-        Sort sort = Sort.by("c.createdAt").descending();
+        Sort sort = Sort.by("c.createdAt").ascending();
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         final User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Page<CommentWithVotes> commentWithVotes = commentRepository.findWithVotesByDiscussion(discussion, user, pageable);
