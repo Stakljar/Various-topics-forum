@@ -31,10 +31,10 @@ public class GlobalExceptionHandler {
     }
 
     private ResponseEntity<ErrorResponse> buildResponseEntity(String message, HttpStatus httpStatus) {
-        ErrorResponse errorDetails = buildErrorResponse(message, httpStatus);
+        ErrorResponse errorResponse = buildErrorResponse(message, httpStatus);
         return ResponseEntity
                 .status(httpStatus)
-                .body(errorDetails);
+                .body(errorResponse);
     }
 
     @ExceptionHandler({JwtException.class, SignatureException.class, BadCredentialsException.class})
