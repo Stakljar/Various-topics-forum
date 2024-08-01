@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.example.various_topics_forum.exception.exceptions.EmailException;
 import com.example.various_topics_forum.exception.exceptions.UserAlreadyEnabledException;
 
-import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.security.SignatureException;
 import jakarta.persistence.EntityNotFoundException;
