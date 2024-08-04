@@ -68,8 +68,7 @@ public class SecurityConfig {
         return http
     		.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(req ->
-                req.requestMatchers("/api/v*/auth/**", "/error")
-                    .permitAll()
+                req.requestMatchers("/api/v*/auth/**", "/error").permitAll()
                     .requestMatchers(HttpMethod.DELETE, "/api/v*/discussions/**").hasAnyRole(Role.ADMIN.name(), Role.REGULAR_USER.name())
                     .requestMatchers(HttpMethod.DELETE, "/api/v*/comments/**").hasAnyRole(Role.ADMIN.name(), Role.REGULAR_USER.name())
                     .requestMatchers(HttpMethod.POST, "/api/v*/discussions/**").hasRole(Role.REGULAR_USER.name())
