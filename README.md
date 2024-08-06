@@ -17,7 +17,7 @@ Features include:
 - Browsing user profiles
 
 ## How to run
-Clone the repository by running:
+Clone the repository by running this command:
 ```
 git clone https://github.com/Stakljar/Various-topics-forum.git
 ```
