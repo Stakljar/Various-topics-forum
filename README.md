@@ -1,5 +1,4 @@
 # Various-topics-forum-fullstack
-
 Full stack web application made using Java Spring Boot, ReactJS and MySQL Database.
 The application is about people discussing on various topics.
 Features include:
@@ -38,14 +37,14 @@ Steps when using command line with Maven on Windows:
 3. In "Path" environment variable add this path "%JAVA_HOME%\bin"
 4. Download Apache Maven Binary zip archive from: https://maven.apache.org/download.cgi
 5. Extract it and copy extracted file's bin directory path and add it to "Path" environment variable
-6. In project's root directory, type in command line:
+6. In project's root directory, run following commands:
 
     ```
     cd backend
     mvn spring-boot:run
     ```
 
-Install node_modules and run frontend, in project's root directory run following:
+Install node_modules and run frontend, in project's root directory run following commands:
 ```
 cd frontend
 npm install
